@@ -92,21 +92,9 @@ See [ENV_SETUP.md](ENV_SETUP.md) for environment variables reference.
 - `GET /api/doctor-appointments` - Get doctor's appointments (doctor only)
 - `PUT /api/appointment/:id` - Update appointment status (doctor only)
 
-## 🔐 Environment Variables
+#
 
-### Backend (.env)
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-NODE_ENV=development
-FRONTEND_URL=http://localhost:5173
-```
 
-### Frontend (.env)
-```env
-VITE_API_URL=http://localhost:5000/api
-```
 
 ## 🎯 Usage
 
