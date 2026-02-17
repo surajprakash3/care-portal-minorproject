@@ -32,30 +32,30 @@ function PatientDashboard() {
 
   const token = localStorage.getItem("token");
 
-  const fetchDoctors = async () => {
-    try {
-      const res = await apiClient.get("/doctors");
-      setAllDoctors(res.data);
-    } catch (error) {
-      console.error("Error fetching doctors:", error);
-    }
-  };
-
   const filteredDoctors = form.department
     ? allDoctors.filter((d) => d.department === form.department)
     : [];
 
-  const fetchAppointments = async () => {
-    const res = await apiClient.get("/my-appointments", {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    setAppointments(res.data);
-  };
-
   useEffect(() => {
+    const fetchDoctors = async () => {
+      try {
+        const res = await apiClient.get("/doctors");
+        setAllDoctors(res.data);
+      } catch (error) {
+        console.error("Error fetching doctors:", error);
+      }
+    };
+
+    const fetchAppointments = async () => {
+      const res = await apiClient.get("/my-appointments", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setAppointments(res.data);
+    };
+
     fetchDoctors();
     fetchAppointments();
-  }, []);
+  }, [token]);
 
   const handleBook = async (e) => {
     e.preventDefault();
@@ -64,7 +64,10 @@ function PatientDashboard() {
       headers: { Authorization: `Bearer ${token}` }
     });
 
-    fetchAppointments();
+    const res = await apiClient.get("/my-appointments", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    setAppointments(res.data);
   };
 
   return (

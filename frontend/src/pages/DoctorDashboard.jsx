@@ -6,16 +6,16 @@ function DoctorDashboard() {
   const [appointments, setAppointments] = useState([]);
   const token = localStorage.getItem("token");
 
-  const fetchAppointments = async () => {
-    const res = await apiClient.get("/doctor-appointments", {
-      headers: { Authorization: `Bearer ${token}` }
-    });
-    setAppointments(res.data);
-  };
-
   useEffect(() => {
+    const fetchAppointments = async () => {
+      const res = await apiClient.get("/doctor-appointments", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setAppointments(res.data);
+    };
+
     fetchAppointments();
-  }, []);
+  }, [token]);
 
   const updateStatus = async (id, status) => {
     await apiClient.put(
@@ -24,7 +24,10 @@ function DoctorDashboard() {
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
-    fetchAppointments();
+    const res = await apiClient.get("/doctor-appointments", {
+      headers: { Authorization: `Bearer ${token}` }
+    });
+    setAppointments(res.data);
   };
 
   return (

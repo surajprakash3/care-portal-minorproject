@@ -1,6 +1,6 @@
 import { useState } from "react";
 import apiClient from "../api/client";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 
 function Login() {
@@ -109,7 +109,7 @@ function Login() {
               {loading ? "Logging in..." : "Login"}
             </button>
             <p className="form-hint">
-              New here? <a className="link" href="/register">Create account</a>
+              New here? <Link className="link" to="/register">Create account</Link>
             </p>
           </form>
         </section>

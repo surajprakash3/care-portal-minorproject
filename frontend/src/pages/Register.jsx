@@ -1,6 +1,6 @@
 import { useState } from "react";
 import apiClient from "../api/client";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
 
 function Register() {
@@ -154,7 +154,7 @@ function Register() {
               {loading ? "Registering..." : "Register"}
             </button>
             <p className="form-hint">
-              Already have an account? <a className="link" href="/">Login</a>
+              Already have an account? <Link className="link" to="/">Login</Link>
             </p>
           </form>
         </section>
