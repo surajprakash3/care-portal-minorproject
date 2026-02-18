@@ -1,5 +1,32 @@
 .auth-page {
   position: relative;
+  overflow: hidden;
+}
+
+.auth-page::before {
+  content: '';
+  position: absolute;
+  width: 550px;
+  height: 550px;
+  background: radial-gradient(circle, rgba(240, 123, 63, 0.15), transparent 70%);
+  top: -180px;
+  right: -180px;
+  border-radius: 50%;
+  animation: float 9s ease-in-out infinite;
+  z-index: -1;
+}
+
+.auth-page::after {
+  content: '';
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(31, 138, 112, 0.12), transparent 70%);
+  bottom: -180px;
+  left: -180px;
+  border-radius: 50%;
+  animation: float 11s ease-in-out infinite reverse;
+  z-index: -1;
 }
 
 .auth-layout {
@@ -10,27 +37,59 @@
 
 .auth-hero {
   padding: 12px 6px;
+  animation: fadeInUp 0.8s ease-out;
 }
 
 .hero-chip {
   display: inline-flex;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(240, 123, 63, 0.18);
+  background: linear-gradient(135deg, rgba(240, 123, 63, 0.22), rgba(240, 123, 63, 0.14));
   color: #8b3f16;
   font-weight: 600;
   font-size: 0.85rem;
+  border: 1px solid rgba(240, 123, 63, 0.25);
+  box-shadow: 0 4px 12px rgba(240, 123, 63, 0.2);
+  transition: var(--transition);
+  animation: fadeInUp 0.8s ease-out 0.4s backwards;
+}
+
+.hero-chip:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(240, 123, 63, 0.3);
 }
 
 .auth-card {
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.9);
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(135deg, rgba(240, 123, 63, 0.3), rgba(31, 138, 112, 0.2));
+  border-radius: var(--radius);
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.auth-card:hover::before {
+  opacity: 1;
 }
 
 .form-hint {
   margin: 0;
   color: var(--muted);
   font-size: 0.92rem;
+  text-align: center;
 }
 
 .form-error {
@@ -40,6 +99,8 @@
   background: rgba(240, 123, 63, 0.15);
   color: #8b3f16;
   font-size: 0.9rem;
+  border-left: 4px solid var(--accent-2);
+  animation: fadeInUp 0.5s ease-out;
 }
 
 @media (min-width: 900px) {

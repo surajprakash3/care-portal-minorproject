@@ -20,11 +20,27 @@ const Navbar = () => {
           <>
             {role === "patient" && (
               <>
-                <a className="link" href="/patient">
+                <a className="link" href="/patient#book">
                   Book Appointment
                 </a>
-                <a className="link" href="/patient">
-                  View Appointment
+                <a className="link" href="/patient#appointments">
+                  My Appointments
+                </a>
+              </>
+            )}
+            {role === "doctor" && (
+              <>
+                <a 
+                  className="link" 
+                  href="/doctor#all"
+                >
+                  View Appointments
+                </a>
+                <a 
+                  className="link" 
+                  href="/doctor#accepted"
+                >
+                  Accepted Appointments
                 </a>
               </>
             )}

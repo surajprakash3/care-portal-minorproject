@@ -76,7 +76,7 @@ function Login() {
               <span className="field-label">Email</span>
               <input
                 className="field-input"
-                placeholder="jane@email.com"
+                placeholder="Email Id"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
               />

@@ -1,5 +1,6 @@
 .dashboard-page {
   padding-top: 36px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .dashboard-header {
@@ -12,10 +13,42 @@
 }
 
 .header-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 16px 20px;
   border-radius: 16px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.header-card:nth-child(1) { animation-delay: 0.1s; }
+.header-card:nth-child(2) { animation-delay: 0.2s; }
+.header-card:nth-child(3) { animation-delay: 0.3s; }
+
+.header-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent), var(--accent-2));
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.header-card:hover::before {
+  transform: scaleY(1);
+}
+
+.header-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .header-label {
@@ -29,11 +62,77 @@
 .header-value {
   margin: 0;
   font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.tab-navigation {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid rgba(31, 138, 112, 0.1);
+  animation: fadeInUp 0.6s ease-out 0.1s backwards;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: var(--transition);
+  position: relative;
+  font-family: inherit;
+}
+
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -18px;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border-radius: 3px 3px 0 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--accent);
+  background: rgba(31, 138, 112, 0.05);
+}
+
+.tab-btn.active {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.dashboard-content {
+  display: grid;
+  gap: 24px;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .dashboard-grid {
   display: grid;
   gap: 24px;
+}
+
+.booking-card {
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.appointments-list-card {
+  animation: fadeInUp 0.6s ease-out 0.3s backwards;
 }
 
 @media (min-width: 900px) {

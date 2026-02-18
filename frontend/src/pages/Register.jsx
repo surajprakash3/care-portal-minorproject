@@ -93,7 +93,7 @@ function Register() {
               <span className="field-label">Name</span>
               <input
                 className="field-input"
-                placeholder="Jane Doe"
+                placeholder="Full Name"
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
               />
@@ -103,7 +103,7 @@ function Register() {
               <span className="field-label">Email</span>
               <input
                 className="field-input"
-                placeholder="jane@email.com"
+                placeholder="Email Id"
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
               />

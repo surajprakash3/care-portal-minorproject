@@ -1,5 +1,6 @@
 .dashboard-page {
   padding-top: 36px;
+  animation: fadeInUp 0.6s ease-out;
 }
 
 .dashboard-header {
@@ -12,10 +13,42 @@
 }
 
 .header-card {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   padding: 16px 20px;
   border-radius: 16px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.8s ease-out backwards;
+}
+
+.header-card:nth-child(1) { animation-delay: 0.1s; }
+.header-card:nth-child(2) { animation-delay: 0.2s; }
+.header-card:nth-child(3) { animation-delay: 0.3s; }
+
+.header-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--accent-2), var(--accent));
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.header-card:hover::before {
+  transform: scaleY(1);
+}
+
+.header-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
 }
 
 .header-label {
@@ -29,10 +62,52 @@
 .header-value {
   margin: 0;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 
 .doctor-actions {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  animation: fadeInUp 0.5s ease-out 0.2s backwards;
+}
+
+.appointments-card {
+  animation: fadeInUp 0.6s ease-out 0.2s backwards;
+}
+
+.appointment-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.appointment-info {
+  flex: 1;
+}
+
+.appointment-item .status-pill {
+  display: inline-block;
+  margin-top: 8px;
+}
+
+.appointment-item .doctor-actions {
+  margin-left: 0;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 768px) {
+  .appointment-item {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .appointment-item .doctor-actions {
+    margin-left: auto;
+  }
 }

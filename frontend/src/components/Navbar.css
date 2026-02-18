@@ -1,24 +1,89 @@
 .navbar {
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 100;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 18px 32px;
-  background: rgba(255, 255, 255, 0.88);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-soft);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  transition: var(--transition);
+  animation: fadeInUp 0.5s ease-out;
+}
+
+.navbar::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    var(--accent) 25%, 
+    var(--accent-2) 50%, 
+    var(--accent) 75%, 
+    transparent 100%
+  );
+  transform: scaleX(0);
+  transition: transform 0.4s ease;
+}
+
+.navbar:hover::before {
+  transform: scaleX(1);
 }
 
 .navbar-brand {
   font-family: "Playfair Display", "Times New Roman", serif;
   font-size: 1.4rem;
+  position: relative;
+  background: linear-gradient(135deg, var(--ink) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
 }
 
 .navbar-actions {
   display: flex;
   align-items: center;
   gap: 16px;
+}
+
+.navbar-actions button.link {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+}
+
+.navbar-actions .btn {
+  box-shadow: 0 4px 12px rgba(31, 138, 112, 0.2);
+}
+
+.navbar-actions .btn:hover {
+  box-shadow: 0 8px 20px rgba(31, 138, 112, 0.3);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .navbar {
+    padding: 14px 20px;
+  }
+  
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
 }
