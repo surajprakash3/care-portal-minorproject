@@ -32,48 +32,8 @@ A full-stack healthcare appointment management system built with MERN stack.
 - MongoDB Atlas account (or local MongoDB)
 - Git
 
-### Local Setup
-
-1. **Clone the repository**
-```bash
-git clone https://github.com/surajprakash3/care-portal-minorproject.git
-cd care-portal-minorproject
-```
-
-2. **Setup Backend**
-```bash
-cd backend
-npm install
-cp .env.example .env
-# Edit .env with your MongoDB URI and JWT secret
-npm run dev
-```
-
-3. **Setup Frontend** (in a new terminal)
-```bash
-cd frontend
-npm install
-cp .env.example .env
-# Edit .env if needed (default: http://localhost:5000/api)
-npm run dev
-```
-
-4. **Access Application**
-- Frontend: http://localhost:5173
-- Backend: http://localhost:5000
 
 ## 🌐 Deployment
-
-### Quick Deploy
-
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com)
-[![Deploy to Vercel](https://vercel.com/button)](https://vercel.com)
-
-### Detailed Instructions
-
-See [DEPLOYMENT.md](DEPLOYMENT.md) for complete step-by-step deployment guide.
-
-See [ENV_SETUP.md](ENV_SETUP.md) for environment variables reference.
 
 ### Production URLs
 - Backend (Render): `https://care-portal-minorproject.onrender.com`
