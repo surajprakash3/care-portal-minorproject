@@ -5,16 +5,17 @@ const jwt = require("jsonwebtoken");
 exports.register = async (req, res) => {
   try {
     const { name, email, password, role, department } = req.body;
+    const normalizedEmail = String(email || "").trim().toLowerCase();
 
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({ email: normalizedEmail }).lean();
     if (existingUser)
       return res.status(400).json({ message: "User already exists" });
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    const user = await User.create({
+    await User.create({
       name,
-      email,
+      email: normalizedEmail,
       password: hashedPassword,
       role,
       department: role === "doctor" ? department : undefined
@@ -29,8 +30,11 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    const normalizedEmail = String(email || "").trim().toLowerCase();
 
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email: normalizedEmail })
+      .select("password role name")
+      .lean();
     if (!user)
       return res.status(400).json({ message: "Invalid credentials" });
 
