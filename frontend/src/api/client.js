@@ -1,6 +1,10 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const fallbackBaseURL = import.meta.env.PROD
+  ? "https://care-portal-minorproject.onrender.com/api"
+  : "http://localhost:5000/api";
+
+const baseURL = import.meta.env.VITE_API_URL || fallbackBaseURL;
 
 const apiClient = axios.create({
   baseURL
