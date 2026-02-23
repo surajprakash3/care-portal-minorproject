@@ -60,6 +60,9 @@ function Login() {
     <div className="page auth-page">
       <div className="auth-layout">
         <section className="auth-hero">
+          <div className="auth-logo-circle">
+            <img src="/src/assets/logo.svg" alt="Logo" className="auth-logo-img" />
+          </div>
           <p className="eyebrow">Care Portal</p>
           <h1 className="page-title">Welcome back</h1>
           <p className="subtle">

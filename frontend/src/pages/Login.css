@@ -1,3 +1,23 @@
+.auth-logo-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin: 0 auto 16px auto;
+  overflow: hidden;
+  border: 4px solid #e0e0e0;
+}
+
+.auth-logo-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
 .auth-page {
   position: relative;
   overflow: hidden;
@@ -86,25 +106,26 @@
 }
 
 .form-hint {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.92rem;
-  text-align: center;
-}
-
-.form-error {
-  margin: 0;
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(240, 123, 63, 0.15);
-  color: #8b3f16;
-  font-size: 0.9rem;
-  border-left: 4px solid var(--accent-2);
-  animation: fadeInUp 0.5s ease-out;
-}
-
-@media (min-width: 900px) {
-  .auth-layout {
+    /* Auth logo circle styles */
+    .auth-logo-circle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      margin: 0 auto 16px auto;
+      overflow: hidden;
+    }
+    
+    .auth-logo-img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+    }
     grid-template-columns: 1.1fr 1fr;
   }
 }

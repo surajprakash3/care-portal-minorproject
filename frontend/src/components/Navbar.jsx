@@ -14,7 +14,12 @@ const Navbar = () => {
 
   return (
     <nav className="navbar">
-      <div className="navbar-brand">CareFlow</div>
+      <div className="navbar-brand">
+        <span className="navbar-logo-circle">
+          <img src="/src/assets/logo.svg" alt="Logo" className="navbar-logo-img" />
+        </span>
+        CareFlow
+      </div>
       <div className="navbar-actions">
         {token ? (
           <>
